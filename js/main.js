@@ -19,20 +19,22 @@ cluesMsg.innerHTML = 'Escribe un número y dale a Prueba';
 cluesMsg.style.color = 'blue';
 
 //FUNCTIONS
+/*generate secret random number upon loading page*/
 function getRandomNumber(max) {
   return Math.ceil(Math.random() * max);
 }
+/*collect data from user number input*/
 function getUserNumber() {
   userNumber = parseInt(userInput.value);
   console.log(`La usuaria ha elegido ${userNumber}`);
   return userNumber;
 }
+/*compare user input to secret number*/
 function compareNumbers() {
   attempts += 1;
   attemptsMsg.innerHTML = attempts;
   console.log('Número de intentos', attempts);
   if (userNumber === secretNumber) {
-    console.log(userNumber, secretNumber);
     /*display success msg*/
     cluesMsg.innerHTML = 'Has ganado campeona!!!';
     cluesMsg.style.color = 'yellowgreen';
@@ -50,11 +52,13 @@ function compareNumbers() {
     cluesMsg.style.color = 'red';
   }
 }
+/* eventHandler function that combines above functions into one*/
 function buttonHandler() {
   getUserNumber();
   compareNumbers();
 }
 
+/*eventHandler function to prevent sending data upon hitting enter*/
 function inputEnterHandler(ev) {
   let keyCode = ev.keyCode;
   if (keyCode === 13) {
@@ -63,5 +67,4 @@ function inputEnterHandler(ev) {
 }
 //LISTENERS
 button.addEventListener('click', buttonHandler);
-/*to prevent sending data on hitting enter after number input*/
 userInput.addEventListener('keydown', inputEnterHandler);
