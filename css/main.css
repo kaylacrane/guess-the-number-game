@@ -16,7 +16,7 @@ html {
   display: flex;
   flex-direction: column;
 }
-.userNumber {
+.user-number {
   width: 250px;
   background-color: lightgrey;
   border-style: none;
