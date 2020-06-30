@@ -14,8 +14,15 @@ const button = document.querySelector('.js-submit-button');
 
 let attempts = 0;
 
+/* Messages to display in clues box */
+const defaultMsg = 'Escribe un número y dale a Prueba';
+const tooHighMsg = 'Demasiado alto...';
+const tooLowMsg = 'Demasiado bajo...';
+const numberLimitMsg = 'El número debe estar entre 1 y 100';
+const winnerMsg = 'Has ganado campeona!!!';
+
 /*set default cluesMsg text*/
-cluesMsg.innerHTML = 'Escribe un número y dale a Prueba';
+cluesMsg.innerHTML = defaultMsg;
 cluesMsg.style.color = 'blue';
 
 //FUNCTIONS
@@ -36,19 +43,19 @@ function compareNumbers() {
   console.log('Número de intentos', attempts);
   if (userNumber === secretNumber) {
     /*display success msg*/
-    cluesMsg.innerHTML = 'Has ganado campeona!!!';
+    cluesMsg.innerHTML = winnerMsg;
     cluesMsg.style.color = 'yellowgreen';
   } else if (userNumber > 100) {
     /*display over 100 msg*/
-    cluesMsg.innerHTML = 'El número debe estar entre 1 y 100';
+    cluesMsg.innerHTML = numberLimitMsg;
     cluesMsg.style.color = 'darkorange';
   } else if (userNumber > secretNumber) {
     /*display too high msg*/
-    cluesMsg.innerHTML = 'Demasiado alto...';
+    cluesMsg.innerHTML = tooHighMsg;
     cluesMsg.style.color = 'red';
   } else if (userNumber < secretNumber) {
     /*display too low msg*/
-    cluesMsg.innerHTML = 'Demasiado bajo...';
+    cluesMsg.innerHTML = tooLowMsg;
     cluesMsg.style.color = 'red';
   }
 }
