@@ -5,6 +5,7 @@
 }
 html {
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
 }
 
 .title,
@@ -23,6 +24,7 @@ html {
   line-height: 30px;
   border-radius: 5px;
   margin: 5px 0;
+  padding-left: 5px;
 }
 
 .submit-button {
@@ -30,6 +32,8 @@ html {
   width: 80px;
   line-height: 30px;
   color: white;
+  font-size: 14px;
+  letter-spacing: 1px;
   background-color: rgb(20, 207, 207);
   border-style: none;
   border-radius: 5px;
@@ -41,4 +45,7 @@ html {
   max-width: 50vw;
   line-height: 30px;
   padding-left: 5px;
+}
+.box-title {
+  color: grey;
 }
