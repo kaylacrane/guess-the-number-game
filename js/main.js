@@ -50,10 +50,18 @@ function compareNumbers() {
     cluesMsg.style.color = 'red';
   }
 }
-function buttonEventHandler() {
+function buttonHandler() {
   getUserNumber();
   compareNumbers();
 }
 
+function inputEnterHandler(ev) {
+  let keyCode = ev.keyCode;
+  if (keyCode === 13) {
+    ev.preventDefault();
+  }
+}
 //LISTENERS
-button.addEventListener('click', buttonEventHandler);
+button.addEventListener('click', buttonHandler);
+/*to prevent sending data on hitting enter after number input*/
+userInput.addEventListener('keydown', inputEnterHandler);
