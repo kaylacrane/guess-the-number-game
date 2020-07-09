@@ -2,50 +2,121 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  outline-style: none;
 }
 html {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
 }
-
-.title,
-.form {
-  margin-left: 10px;
-  margin-top: 10px;
+body {
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(rgb(32, 232, 215), rgb(230, 14, 99));
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  margin: 50px auto 0;
+  border: 15px double rgb(27, 27, 27);
+  border-radius: 25px;
+  padding: 20px;
+  background-color: white;
 }
 .form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.title {
+  text-align: center;
+  font-family: 'Fjalla One', sans-serif;
+  letter-spacing: 8px;
+  margin: 25px 15px;
+}
+.title__icons {
+  letter-spacing: 25px;
+  color: rgb(122, 122, 122);
+}
+.guess {
+  display: block;
+  text-align: center;
+  padding: 5px;
 }
 .user-number {
-  width: 250px;
-  background-color: lightgrey;
+  width: 115px;
+  background-color: rgb(100, 209, 209);
+  color: white;
+  font-size: 50px;
+  text-align: center;
   border-style: none;
-  line-height: 30px;
-  border-radius: 5px;
+  height: 115px;
+  border-radius: 50%;
   margin: 5px 0;
   padding-left: 5px;
 }
-
-.submit-button {
+.button {
   display: inline-block;
-  width: 80px;
-  line-height: 30px;
+  width: fit-content;
   color: white;
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 1px;
-  background-color: rgb(20, 207, 207);
+  background-color: rgb(31, 12, 194);
   border-style: none;
   border-radius: 5px;
-  margin: 5px 0;
+  margin: 20px;
+  padding: 10px 25px;
+}
+.button:hover {
+  box-shadow: 0 0 10px 5px grey;
+}
+.submit-button {
+  opacity: 0.2;
+  font-size: 20px;
+  background-color: rgb(230, 14, 99);
 }
 .msg-box {
-  border: 2px solid lightgrey;
+  border: 1px solid rgb(0, 0, 0);
   margin: 5px 0;
-  max-width: 50vw;
+  width: 350px;
   line-height: 30px;
-  padding-left: 5px;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 16px;
+}
+.msg-clue {
+  font-weight: bold;
 }
 .box-title {
-  color: grey;
+  color: black;
+  font-family: 'Fjalla One', sans-serif;
+  letter-spacing: 5px;
+  margin: 20px auto 0;
+  font-weight: bold;
+}
+.newGame-container {
+  display: flex;
+}
+.newGame-button {
+  display: inline-block;
+}
+.newGame-button:before {
+  font-family: 'Font Awesome 5 Free';
+  content: '\f021';
+  display: inline-block;
+  padding-right: 3px;
+  vertical-align: middle;
+  font-weight: 900;
+}
+.newGame-button:after {
+  font-family: 'Font Awesome 5 Free';
+  content: '\f021';
+  display: inline-block;
+  padding-right: 3px;
+  vertical-align: middle;
+  font-weight: 900;
 }

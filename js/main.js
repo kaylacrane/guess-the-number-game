@@ -1,77 +1,99 @@
 'use strict';
 
-//SELECTORS -- document.querySelector("");
-const secretNumber = getRandomNumber(100);
-console.log(`El número aleatorio es ${secretNumber}`);
-
+//SELECTORS
+let secretNumber = getRandomNumber(100);
 const userInput = document.querySelector('.js-user-number');
-let userNumber = 0;
-
-const cluesMsg = document.querySelector('.js-clues-msg');
+const cluesMsgBox = document.querySelector('.js-clues-msg');
 const attemptsMsg = document.querySelector('.js-attempts-msg');
+const submitButton = document.querySelector('.js-submit-button');
+const newGameButton = document.querySelector('.js-newGame-button');
 
-const button = document.querySelector('.js-submit-button');
-
+let userNumber;
 let attempts = 0;
 
-/* Messages to display in clues box */
-const defaultMsg = 'Escribe un número y dale a Prueba';
-const tooHighMsg = 'Demasiado alto...';
-const tooLowMsg = 'Demasiado bajo...';
-const numberLimitMsg = 'El número debe estar entre 1 y 100';
-const winnerMsg = 'Has ganado campeona!!!';
-
-/*set default cluesMsg text*/
-cluesMsg.innerHTML = defaultMsg;
-cluesMsg.style.color = 'blue';
+console.log(`El número aleatorio es ${secretNumber}`);
 
 //FUNCTIONS
-/*generate secret random number upon loading page*/
+/*generates secret random number upon loading page*/
 function getRandomNumber(max) {
   return Math.ceil(Math.random() * max);
 }
-/*collect data from user number input*/
+/*collects data from user number input*/
 function getUserNumber() {
   userNumber = parseInt(userInput.value);
   console.log(`La usuaria ha elegido ${userNumber}`);
-  return userNumber;
 }
-/*compare user input to secret number*/
-function compareNumbers() {
+/*increases attempts number*/
+function updateAttempts() {
   attempts += 1;
   attemptsMsg.innerHTML = attempts;
   console.log('Número de intentos', attempts);
-  if (userNumber === secretNumber) {
-    /*display success msg*/
-    cluesMsg.innerHTML = winnerMsg;
-    cluesMsg.style.color = 'yellowgreen';
-  } else if (userNumber > 100) {
-    /*display over 100 msg*/
-    cluesMsg.innerHTML = numberLimitMsg;
-    cluesMsg.style.color = 'darkorange';
+}
+/*changes clue text and colors*/
+function changeClues(msg, color) {
+  cluesMsgBox.innerHTML = msg;
+  cluesMsgBox.style.color = color;
+}
+/*sets default cluesMsg text*/
+changeClues('Type a number and hit submit', 'blue');
+/*compares numbers and makes changes to clues*/
+function compareNumbers() {
+  if (userNumber < 1 || userNumber > 100) {
+    /*displays under 1 or over 100 msg*/
+    changeClues('Guess a number from 1 to 100', 'rgb(156, 2, 136)');
+  } else if (userNumber === secretNumber) {
+    /*displays success msg*/
+    changeClues(
+      `💐 💐 ${userNumber} is the secret number! 💐 💐`,
+      'rgb(230, 14, 99)'
+    );
+    /*deactivates button*/
+    submitButton.disabled = true;
+    submitButton.style.opacity = '0.5';
   } else if (userNumber > secretNumber) {
-    /*display too high msg*/
-    cluesMsg.innerHTML = tooHighMsg;
-    cluesMsg.style.color = 'red';
+    /*displays too high msg*/
+    changeClues(`${userNumber} is too high...`, 'rgb(230, 14, 99)');
   } else if (userNumber < secretNumber) {
     /*display too low msg*/
-    cluesMsg.innerHTML = tooLowMsg;
-    cluesMsg.style.color = 'red';
+    changeClues(`${userNumber} is too low...`, 'rgb(230, 14, 99)');
   }
 }
-/* eventHandler function that combines above functions into one*/
-function buttonHandler() {
-  getUserNumber();
-  compareNumbers();
+/*Clears number input when button is clicked*/
+function clearNumber() {
+  if (userInput.value) {
+    userInput.value = '';
+  }
 }
-
-/*eventHandler function to prevent sending data upon hitting enter*/
+// EVENT HANDLERS
+/* Combines above functions into one*/
+function submitButtonHandler() {
+  getUserNumber();
+  updateAttempts();
+  compareNumbers();
+  clearNumber();
+}
+/*Prevents sending data upon hitting enter*/
 function inputEnterHandler(ev) {
   let keyCode = ev.keyCode;
   if (keyCode === 13) {
     ev.preventDefault();
   }
+  /*to activate button*/
+  submitButton.disabled = false;
+  submitButton.style.opacity = '1';
 }
-//LISTENERS
-button.addEventListener('click', buttonHandler);
+/*starts a new game*/
+function startNewGame() {
+  secretNumber = getRandomNumber(100);
+  console.log(`El número aleatorio es ${secretNumber}`);
+  attempts = 0;
+  changeClues('Type a number and hit submit', 'blue');
+  submitButton.disabled = true;
+  submitButton.style.opacity = '0.5';
+}
+
+// LISTENERS
+submitButton.addEventListener('click', submitButtonHandler);
 userInput.addEventListener('keydown', inputEnterHandler);
+userInput.addEventListener('click', clearNumber);
+newGameButton.addEventListener('click', startNewGame);

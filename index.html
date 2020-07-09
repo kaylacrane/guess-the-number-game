@@ -4,36 +4,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Adivinar el número</title>
+    <script
+      src="https://kit.fontawesome.com/c75582e3c5.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <title>Guess the Number</title>
     <link href="./css/main.css" rel="stylesheet" />
   </head>
   <body>
-    <h1 class="title">Adivinar el número</h1>
-    <form action="" method="POST" class="form">
-      <label for="userNumber">Introduce aquí tu número:</label>
-      <input
-        type="number"
-        name=""
-        id="userNumber"
-        class="user-number js-user-number"
-      />
+    <div class="container">
+      <span class="title__icons"
+        ><i class="far fa-question-circle fa-xs"></i
+        ><i class="far fa-question-circle"></i
+        ><i class="far fa-question-circle fa-xs"></i
+        ><i class="far fa-question-circle"></i
+        ><i class="far fa-question-circle fa-xs"></i
+        ><i class="far fa-question-circle"></i
+        ><i class="far fa-question-circle fa-xs"></i
+      ></span>
+      <h1 class="title">Guess the Number</h1>
 
-      <div class="msg-box clues">
-        <span class="box-title">Pista: </span><span class="js-clues-msg"></span>
-      </div>
-      <div class="msg-box attempts">
-        <span class="box-title">Número de intentos: </span
-        ><span class="js-attempts-msg"></span>
-      </div>
+      <form action="" method="POST" class="form">
+        <label for="userNumber"
+          ><span class="guess">Enter your guess here</span>
+          <span class="guess"
+            ><i class="fas fa-arrow-alt-circle-down"></i> </span
+        ></label>
+        <input
+          type="number"
+          name=""
+          id="userNumber"
+          class="user-number js-user-number"
+        />
+        <button
+          id="submit-button"
+          class="button submit-button js-submit-button"
+          type="button"
+          disabled
+        >
+          Submit your guess
+        </button>
+        <span class="box-title">Clue: </span>
+        <div class="msg-box clues">
+          <span class="msg-clue js-clues-msg"></span>
+        </div>
+        <span class="box-title">Attempts: </span>
+        <div class="msg-box attempts">
+          <span class="msg-clue js-attempts-msg">0</span>
+        </div>
+        <button
+          id="newGame-button"
+          class="button newGame-button js-newGame-button"
+          type="reset"
+        >
+          New game
+        </button>
+      </form>
+    </div>
 
-      <button
-        id="submit-button"
-        class="submit-button js-submit-button"
-        type="button"
-      >
-        Prueba
-      </button>
-    </form>
     <script src="./js/main.js" type="text/javascript"></script>
   </body>
 </html>
