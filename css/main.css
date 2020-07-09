@@ -121,3 +121,15 @@ body {
   vertical-align: middle;
   font-weight: 900;
 }
+.logo-adalab {
+  height: auto;
+  width: 55px;
+  display: inline-block;
+  position: relative;
+  transform: translateY(4px);
+}
+.logo {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+}
