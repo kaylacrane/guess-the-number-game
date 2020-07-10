@@ -87,6 +87,7 @@ function startNewGame() {
   secretNumber = getRandomNumber(100);
   console.log(`El número aleatorio es ${secretNumber}`);
   attempts = 0;
+  attemptsMsg.innerHTML = attempts;
   changeClues('Type a number and hit submit', 'blue');
   submitButton.disabled = true;
   submitButton.style.opacity = '0.5';
@@ -95,5 +96,4 @@ function startNewGame() {
 // LISTENERS
 submitButton.addEventListener('click', submitButtonHandler);
 userInput.addEventListener('keydown', inputEnterHandler);
-userInput.addEventListener('click', clearNumber);
 newGameButton.addEventListener('click', startNewGame);
